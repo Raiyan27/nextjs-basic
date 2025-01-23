@@ -1,16 +1,22 @@
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { NextResponse } from "next/server"; // Use NextResponse for redirects
 
-export default async function Profile() {
+export async function getServerSideProps(context) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
   if (!user) {
-    return NextResponse.redirect(
-      "https://nextjs-blogs-app.vercel.app/api/auth/login"
-    );
+    return {
+      redirect: {
+        destination: "https://nextjs-blogs-app.vercel.app/api/auth/login",
+        permanent: false,
+      },
+    };
   }
 
+  return { props: {} };
+}
+
+export default function Profile() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
       <div className="flex flex-col md:flex-row justify-center items-center gap-4 bg-white shadow-lg rounded-lg max-w-4xl w-full p-6 space-x-6">
