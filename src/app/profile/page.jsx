@@ -6,7 +6,9 @@ export default async function Profile() {
   const user = await getUser();
 
   if (!user) {
-    return NextResponse.redirect("/api/auth/login");
+    return NextResponse.redirect(
+      "https://nextjs-blogs-app.vercel.app/api/auth/login"
+    );
   }
 
   return (
