@@ -1,9 +1,8 @@
 import React from "react";
 
 export default async function Page({ params }) {
-  const res = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${params.id}`
-  );
+  const { id } = await params;
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
   const data = await res.json();
 
   return (
