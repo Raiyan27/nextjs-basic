@@ -1,17 +1,11 @@
+"use client";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import Link from "next/link";
 import { NextResponse } from "next/server";
 
 export default async function Profile() {
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
+  const user = localStorage.getItem("user");
   if (!user) {
-    return (
-      <div>
-        <h1>You are not logged in</h1>
-        <Link href="/api/auth/login">Login</Link>
-      </div>
-    );
+    return NextResponse.redirect("/login");
   }
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">

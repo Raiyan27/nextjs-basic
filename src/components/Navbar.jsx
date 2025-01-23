@@ -1,9 +1,11 @@
+"use client";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import Link from "next/link";
 
 export default async function Navbar() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
+  localStorage.setItem("user", user);
 
   return (
     <div className="bg-gray-300">
