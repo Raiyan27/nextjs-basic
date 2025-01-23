@@ -5,6 +5,10 @@ export default async function Navbar() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
+  if (user) {
+    localStorage.setItem("user", user);
+  }
+
   return (
     <div className="bg-gray-300">
       <div className="flex items-center justify-between max-w-screen-2xl mx-auto p-4">
