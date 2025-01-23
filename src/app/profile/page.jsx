@@ -1,4 +1,4 @@
-import React from "react";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 export default async function Profile() {
   const { getUser } = getKindeServerSession();
