@@ -1,17 +1,6 @@
-"use client";
-
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
-import { redirect } from "next/navigation";
 import React from "react";
 
 export default async function Profile() {
-  const { user, getUser } = useKindeBrowserClient();
-  const alsoUser = getUser();
-
-  if (!user) {
-    redirect("/api/auth/login");
-  }
-
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
       <div className="flex flex-col md:flex-row justify-center items-center gap-4 bg-white shadow-lg rounded-lg max-w-4xl w-full p-6 space-x-6">
