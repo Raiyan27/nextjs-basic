@@ -31,9 +31,9 @@ export default async function Navbar() {
               </>
             ) : (
               <>
-                <Link href="/api/auth/login">
+                <Link href="/api/auth/register">
                   <li className="btn px-4 py-2 rounded-md bg-blue-300 hover:bg-blue-200">
-                    Login
+                    Register
                   </li>
                 </Link>
               </>
