@@ -3,11 +3,15 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 export default async function Profile() {
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
+  let user;
 
-  if (!user) {
+  try {
+    const { getUser } = getKindeServerSession();
+    user = await getUser();
+  } catch (error) {
+    console.error("Error fetching user session:", error);
     redirect("/api/auth/login");
+    return;
   }
 
   return (
