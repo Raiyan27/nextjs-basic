@@ -19,7 +19,7 @@ export default async function Navbar() {
             </Link>
             {user ? (
               <>
-                <Link href="/profile">
+                <Link href="/u_profile">
                   <li className="btn px-4 py-2  rounded-md bg-gray-100 hover:bg-gray-50">
                     Profile
                   </li>
