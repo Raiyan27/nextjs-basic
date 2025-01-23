@@ -4,7 +4,7 @@ import Link from "next/link";
 export default async function Navbar() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
-  console.log(user);
+  console.log("navbar:", user);
 
   return (
     <div className="bg-gray-300">
