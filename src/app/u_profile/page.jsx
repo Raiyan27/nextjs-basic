@@ -2,16 +2,17 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
 
 export default async function Profile() {
-  let user = {};
+  const { getUser } = getKindeServerSession();
+  let user = null;
+
   try {
-    const { getUser } = getKindeServerSession();
     user = await getUser();
-    console.log(user);
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    console.error(error);
   }
+
   if (!user) {
-    redirect("https://nextjs-blogs-app.vercel.app/api/auth/login");
+    redirect("/api/auth/login");
   }
 
   return (
@@ -23,8 +24,8 @@ export default async function Profile() {
           className="w-32 h-32 rounded-full object-cover"
         />
         <div className="flex flex-col space-y-2 text-center">
-          <h1 className="text-3xl font-semibold text-gray-800 ">
-            Welcome to your profile
+          <h1 className="text-3xl font-semibold text-gray-800">
+            Welcome to your profile, {user?.name}
           </h1>
         </div>
       </div>
