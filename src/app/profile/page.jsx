@@ -5,8 +5,11 @@ export default async function Profile() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   if (!user) {
-    return NextResponse.redirect(
-      "https://nextjs-blogs-app.vercel.app/api/auth/login"
+    return (
+      <div>
+        <h1>You are not logged in</h1>
+        <Link href="/api/auth/login">Login</Link>
+      </div>
     );
   }
   return (
